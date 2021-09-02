@@ -48,7 +48,7 @@ document.getElementById('button').addEventListener('click', async () => {
 // displayInformation function
 const displayInformation = (booksData) => {
   console.log(booksData.length);
-  if (booksData.length == 0 || booksData === null) {
+  if (booksData.length === 0 || booksData === null) {
     //add  No result found Message
     ResultFound('result', 'block');
     // remove spiners
