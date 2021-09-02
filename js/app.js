@@ -31,15 +31,20 @@ document.getElementById('button').addEventListener('click', async () => {
   // hand clients site error
   try {
     // Call API
-    const url = `http://openlibrary.org/search.json?q=${inputText}`;
+    const url = `https://openlibrary.org/search.json?q=${inputText}`;
     const res = await fetch(url);
     const data = await res.json();
+    // total founded result capture
+    const totalFound = data.numFound;
+
+    // set total books found result
+    const totaltotalFound = document.getElementById('total');
+    totaltotalFound.innerText = totalFound;
 
     // Call function
     displayInformation(data.docs)
 
   } catch (er) {
-    console.log(er)
     ResultFound('result', 'block');
     // remove spiners
     ResultFound('spiners', 'none')
@@ -49,7 +54,7 @@ document.getElementById('button').addEventListener('click', async () => {
 // displayInformation function
 const displayInformation = (data) => {
 
-  if (data.length === 0) {
+  if (data.totalFoundgth === 0) {
     //add  No result found Message
     ResultFound('result', 'block');
     // remove spiners
@@ -59,12 +64,8 @@ const displayInformation = (data) => {
     // remove No result found Message
     ResultFound('result', 'none')
   }
-  // get total Array length
-  const len = data.length;
-
-  // set total books found result
-  const totallen = document.getElementById('total');
-  totallen.innerText = len;
+  // get total Array totalFoundgth
+  const totalFound = data.totalFoundgth;
 
   // show total search value
   ResultFound('total-search-value', 'block')
@@ -85,9 +86,9 @@ const displayInformation = (data) => {
       <img src="https://covers.openlibrary.org/b/id/${singleData.cover_i ? singleData.cover_i : 'No picture founded'}-M.jpg" class="card-img-top" alt="Book image" style = "width: 150px; height: 200px;">
       </div>
       <div class="card-body">
-        <h5 class="card-title">BookName: ${singleData.title}</h5>
-        <h5 class="card-title"> lekhok : ${singleData.author_name ? singleData.author_name[0]: 'Unknown author'}</h5>
-        <p class="card-text"> firstPublishData ${singleData.first_publish_year ? singleData.first_publish_year: 'Unknown Year'}</p>
+        <h5 class="card-title">Book Name: ${singleData.title}</h5>
+        <h5 class="card-title"> Writer : ${singleData.author_name ? singleData.author_name[0]: 'Unknown author'}</h5>
+        <p class="card-text"> First Publish Data ${singleData.first_publish_year ? singleData.first_publish_year: 'Unknown Year'}</p>
       </div>
     </div>`
     displayContainer.appendChild(div);
