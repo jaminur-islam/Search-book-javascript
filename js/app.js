@@ -1,5 +1,5 @@
 //  result found function [multi time using]
-const ResultFound = (id, property) => {
+  const ResultFound = (id, property) => {
   const noResult = document.getElementById(id)
   noResult.style.display = property;
 }
@@ -26,7 +26,6 @@ document.getElementById('button').addEventListener('click', async () => {
   }
   // Add spiners
   ResultFound('spiners', 'block')
-
   // hand clients site error
   try {
     // Call API
@@ -34,7 +33,7 @@ document.getElementById('button').addEventListener('click', async () => {
     const res = await fetch(url);
     const data = await res.json();
 
-  // set total books found result
+    // set total books found result
     const totalLen = document.getElementById('total');
     totalLen.innerText = data.numFound;
 
@@ -42,7 +41,6 @@ document.getElementById('button').addEventListener('click', async () => {
     displayInformation(data.docs)
 
   } catch (er) {
-    console.log(er)
     ResultFound('result', 'block');
     // remove spiners
     ResultFound('spiners', 'none')
@@ -50,19 +48,15 @@ document.getElementById('button').addEventListener('click', async () => {
 })
 // displayInformation function
 const displayInformation = (data) => {
-
   if (data.length === 0) {
     //add  No result found Message
     ResultFound('result', 'block');
     // remove spiners
     ResultFound('spiners', 'none')
-
   } else {
     // remove No result found Message
     ResultFound('result', 'none')
   }
-  // get total Array length
-  const len = data.length;
 
   // show total search value
   ResultFound('total-search-value', 'block')
@@ -70,24 +64,22 @@ const displayInformation = (data) => {
   // select displayBook tag 
   const displayContainer = document.getElementById('displaybook')
   displayContainer.textContent = '';
-
   // Arrray ForEaching
-  data.slice(0, 9).forEach(singleData => {
-
+  data.slice(0, 18).forEach(singleData => {
     //Create a div tag
     const div = document.createElement('div');
-    div.classList.add('col');
+    div.className = 'col mb-5';
     div.innerHTML = `
-      <div class=" h-100 d-flex">
-      <div>
-      <img src="https://covers.openlibrary.org/b/id/${singleData.cover_i ? singleData.cover_i : 'No picture founded'}-M.jpg" class="card-img-top" alt="Book image" style = "width: 150px; height: 200px;">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">BookName: ${singleData.title}</h5>
-        <h5 class="card-title"> lekhok : ${singleData.author_name ? singleData.author_name[0]: 'Unknown author'}</h5>
-        <p class="card-text"> firstPublishData ${singleData.first_publish_year ? singleData.first_publish_year: 'Unknown Year'}</p>
-      </div>
-    </div>`
+    <div class="text-center border-0 ">
+    <img width="180" height="220" src="https://covers.openlibrary.org/b/id/${singleData.cover_i ? singleData.cover_i: ''}-M.jpg" class="mx-auto" alt="...">
+    <div class="mt-2">
+      <h5 class="card-title m-0 fw-bold text-primary">${singleData.title}</h5>
+      <p class=" m-0 fw-bold"> Author-Name : ${singleData.author_name ? singleData.author_name[0]: 'Unknown author'}</p>
+      <p class=" m-0 fw-bold"> first-publist-Year : ${singleData.first_publish_year ? singleData.first_publish_year: 'Unknown Year'}</p>
+      <p class=" m-0 fw-bold"> Publisher : ${singleData. publisher[0] ? singleData.publisher[0] : 'Unknow publisher'}</p>
+    </div>
+     <button class="btn-primary p-1 w-50 mt-1 mx-auto rounded">More Details</button>
+  </div>`
     displayContainer.appendChild(div);
     // Remove spiners
     ResultFound('spiners', 'none')

@@ -12,26 +12,28 @@
   <!-- Adding Css file  -->
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <!-- Start Header Section -->
   <header class="container">
+    <!-- button and input  -->
     <h1 class="text-center fs-2 mt-3 text-primary"> Search Your Favorite Book</h1>
     <div class="input-group mb-3 container mt-3 w-50">
       <input id="input-field" type="text" class="form-control p-2" placeholder="Write a book name.."
         aria-label="Recipient's username" aria-describedby="button-addon2">
-      <button class="btn btn-outline-primary" type="button" id="button">Search</button>
+      <button class="btn btn-outline-primary text-white bg-primary" type="button" id="button">Search</button>
     </div>
   </header>
   <!-- End Header Section -->
   <!-- Start Main -->
   <main class="container">
-
     <!--loading Spiners -->
-    <div id="spiners"></div>
+    <div id="spiners">
+    </div>
 
     <!-- Total founded Result -->
     <div id="total-search-value">
-      <h4> Total found : <span id="total"> </span></h4>
+      <h5 class="text-secondary"> Total found : <span id="total"> </span></h5>
     </div>
 
     <!-- No Result Found Message -->
@@ -40,7 +42,7 @@
     </div>
 
     <!-- Books Container -->
-    <div id="displaybook" class="row row-cols-1 row-cols-md-3 g-4 container mx-auto mt-3">
+    <div id="displaybook" class="row row-cols-1 row-cols-md-3 mt-4 ">
     </div>
   </main>
   <!-- End Main -->

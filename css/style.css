@@ -1,10 +1,15 @@
+body{
+  background-color: rgb(236, 225, 233);
+}
 #result {
   display: none;
 }
 #total-search-value {
   display: none;
 }
-
+img {
+  box-shadow: 2px 4px 8px rgb(128, 128, 128);
+}
 /* Spiner Style */
 #spiners {
   display: none;
